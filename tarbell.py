@@ -1,15 +1,7 @@
 """
 Google doc configuration. If not provided, no Google doc will be used.
 """
-{% if spreadsheet_key %}
-GOOGLE_DOC = {
-    'key': '{{ spreadsheet_key }}',
-}
-{% else %}
-# GOOGLE_DOC = {
-#     'key': '<spreadsheet key>',
-# }
-{% endif %}
+GOOGLE_SPREADSHEET_KEY = None
 
 """
 Set default context. These variables will be globally available to the template.
@@ -17,16 +9,6 @@ Set default context. These variables will be globally available to the template.
 DEFAULT_CONTEXT = {
     'title': '{{ long_name }}',
 }
-
-"""
-Root URL project will appear at (e.g. http://mydomain.tld/{{ url_root }})
-"""
-# URL_ROOT = '{{ project_name }}'
-
-"""
-Don't render to static HTML.
-"""
-# DONT_PUBLISH = False
 
 """
 Don't create JSON for project (default: true)
