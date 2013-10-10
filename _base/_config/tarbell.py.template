@@ -17,7 +17,7 @@ DEFAULT_CONTEXT = {
 {% if s3_buckets %}# S3 buckets
 S3_BUCKETS = {
     {% if s3_buckets.production %}"production": "{{ s3_buckets.production }}/{{ name }}/",{% endif %}
-    {% if s3_buckets.staging %}"staging": "s3://{{ s3_buckets.staging }}/{{ name }}/",{% endif %}
+    {% if s3_buckets.staging %}"staging": "{{ s3_buckets.staging }}/{{ name }}/",{% endif %}
 }
 {% endif %}
 
