@@ -5,7 +5,7 @@
   <link rel="shortcut icon" href="/favicon{% if preview_mode %}-preview{% endif %}.ico" />
 
   {% block css %}
-  <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/css/bootstrap.min.css" />
   {% endblock css %}
 
   {% block opengraph %} 
@@ -27,53 +27,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {% endblock meta %}
 </head>
-<body{% block bodyattrs %} class="has-nav {{ pagename }}"{% endblock bodyattrs %}>
+<body{% block bodyattrs %} class="{{ pagename }}"{% endblock bodyattrs %}>
 
-{# Override the `container` block to disable default layout. #}
+{% block nav %}
+  {% include "_nav.html" %}
+{% endblock nav %}
+
 {% block container %}
-  <div id="header">
-    {% block header %}{% endblock header %}
-  </div>
-  <div id="content">
-    {% block content %}{% endblock content %}
-  </div>
-  <div id="footer">
-    {% block footer %}{% endblock footer %}
-  </div>
+<div class="container">
+{% block content %}{% endblock content %}
+</div>
 {% endblock container %}
 
-{% block scripts %}
-{#
-  The default script configuration uses RequireJS to initialize the app's 
-  default Backbone app. To dispense with this madness, simply override the
-  block.
-#}
-<script type="text/javascript">
-var require = {
-  urlRoot: './',
-  paths: {
-    backbone: '//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.0.0/backbone',
-    bootstrap: '//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0-rc2/js/bootstrap.min',
-    jquery: '//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery',
-    text: '//cdnjs.cloudflare.com/ajax/libs/require-text/2.0.5/text',
-    underscore: '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.1/underscore',
-  },
-  shim: {
-    backbone: {
-      deps: ["underscore", "jquery"],
-      exports: "Backbone"
-    },
-    bootstrap: {
-      deps: ["jquery"]
-    },
-    underscore: {
-      exports: '_'
-    },
-  }
-};
-</script>
+{% block footer %}
+  {% include "_footer.html" %}
+{% endblock footer %}
 
-<script type="text/javascript" data-main="js/app.js" src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.8/require.js"></script>
+{% block scripts %}
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.0/js/bootstrap.min.js"></script>
 {% endblock scripts %}
 
 </body>

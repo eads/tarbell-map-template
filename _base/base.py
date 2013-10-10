@@ -16,6 +16,44 @@ class TarbellScrubber(Scrubber):
 
 blueprint = Blueprint('base', __name__)
 
+def static_url(path):
+    """Generate a static url path with cache buster."""
+    cachebuster = int(time())
+    return "%s?t=%s" % (path, cachebuster)
+
+
+def page_url(pagename=''):
+    """Generate a page url. Currently badly implemented."""
+    return pagename
+
+
+def read_file(path, absolute=False):
+    """
+    Read the file at `path`. If `absolute` is True, use absolute path,
+    otherwise path is assumed to be relative to Tarbell template root dir.
+    """
+    if not absolute:
+        path = os.path.join(os.path.dirname(__file__), '..', path)
+
+    try:
+        return open(path, 'r').read()
+    except IOError:
+        return None
+
+
+@blueprint.app_context_processor
+def context_processor():
+    """
+    Add helper functions to context for all projects.
+    """
+    context = {
+        'static_url': static_url,
+        'page_url': page_url,
+        'read_file': read_file,
+    }
+
+    return context
+
 
 @blueprint.app_template_filter()
 def process_text(text, scrub=True):
