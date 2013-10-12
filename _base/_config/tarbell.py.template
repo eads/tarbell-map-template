@@ -5,7 +5,7 @@ NAME = "{{ name }}"
 TITLE = "{{ title }}"
 
 {% if key %}# Google spreadsheet identifier
-SPREADSHEET_KEY = "{{ spreadsheet_key }}"
+SPREADSHEET_KEY = "{{ key }}"
 {% endif %}
 
 # Default template variables
