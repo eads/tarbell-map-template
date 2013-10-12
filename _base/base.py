@@ -8,6 +8,7 @@ import markdown as Markdown
 import os
 from scrubber import Scrubber
 
+NAME = "Basic Bootstrap 3 template"
 
 class TarbellScrubber(Scrubber):
     disallowed_tags_save_content = set((
