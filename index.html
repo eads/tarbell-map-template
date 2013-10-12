@@ -35,8 +35,13 @@
     </div>
     <div class='container'>
       <div class='row'>
-        <div class='col-md-4'>
+        <div class='col-md-5'>
+          <h1>Chicago recycling locations</h1>
           <p>This is a demo of <a href='http://derekeder.com'>Derek Eder's</a> <a href='http://derekeder.com/searchable_map_template/'>Searchable Map Template</a> using Google <a href='http://support.google.com/fusiontables/answer/2571232?hl=en&ref_topic=1652595'>Fusion Tables</a>. Use this section to give a little context your map.</p>
+
+          {% if SPREADSHEET_KEY %}
+          <p>This demo is packaged using <a href="https://tarbell.tribapps.com">Tarbell.</a> You can change the configuration of <code>js/maps_lib.js</code> by editing <a href="https://docs.google.com/spreadsheet/ccc?key={{ SPREADSHEET_KEY }}" target="_blank">the project's Google spreadsheet</a>. You can modify this file by editing <code>{{ PROJECT_PATH }}/index.html</code>.</p>
+          {% endif %}
           <div class='well'>
             <h4>
               Address <small>(<a id='find_me' href='#'>find me</a>)</small>
@@ -55,8 +60,17 @@
                 </select>
               </label>
             </p>
-
-            <br />
+            <a class='btn btn-primary' id='search'>
+              <i class='glyphicon glyphicon-search'></i>
+              Search
+            </a>
+            <a class='btn btn-default' id='reset'>
+              <i class='glyphicon glyphicon-repeat'></i>
+              Reset
+            </a>
+          </div>
+          <div class='alert alert-info' id='result_box' ><strong id='result_count'></strong></div>
+          <div class='well'>
             <h4>Custom filters and views</h4>
             <p>Take a look at the <a href='https://github.com/derekeder/FusionTable-Map-Template/wiki/Filter-examples'>wiki</a> to see how to add your own custom filters and views like:</p>
             <div class='row'>
@@ -77,18 +91,10 @@
               </div>
             </div>
             <br />
-            <a class='btn btn-primary' id='search'>
-              <i class='glyphicon glyphicon-search'></i>
-              Search
-            </a>
-            <a class='btn btn-default' id='reset'>
-              <i class='glyphicon glyphicon-repeat'></i>
-              Reset
-            </a>
+
           </div>
-          <div class='alert alert-info' id='result_box' ><strong id='result_count'></strong></div>
         </div>
-        <div class='col-md-8'>
+        <div class='col-md-7'>
           <noscript>
             <div class='alert alert-info'>
               <h4>Your JavaScript is disabled</h4>

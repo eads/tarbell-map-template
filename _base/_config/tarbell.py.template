@@ -9,10 +9,7 @@ SPREADSHEET_KEY = "{{ key }}"
 {% endif %}
 
 # Default template variables
-DEFAULT_CONTEXT = {
-  "name": "{{ name }}",
-  "title": "{{ title }}",
-}
+DEFAULT_CONTEXT = {{ default_context|pprint_lines }}
 
 {% if s3_buckets %}# S3 buckets
 S3_BUCKETS = {
