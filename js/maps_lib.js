@@ -21,26 +21,30 @@ var MapsLib = {
 
   //the encrypted Table ID of your Fusion Table (found under File => About)
   //NOTE: numeric IDs will be depricated soon
-  fusionTableId:      "1m4Ez9xyTGfY2CU6O-UgEcPzlS0rnzLU93e4Faa0",
+  fusionTableId:      "{{ fusionTableId }}",
 
   //*New Fusion Tables Requirement* API key. found at https://code.google.com/apis/console/
   //*Important* this key is for demonstration purposes. please register your own.
-  googleApiKey:       "AIzaSyA3FQFrNr5W2OEVmuENqhb2MBB2JabdaOY",
+  googleApiKey:       "{{ googleApiKey }}",
 
   //name of the location column in your Fusion Table.
   //NOTE: if your location column name has spaces in it, surround it with single quotes
   //example: locationColumn:     "'my location'",
-  locationColumn:     "geometry",
+  locationColumn:     "{{ locationColumn }}",
 
-  map_centroid:       new google.maps.LatLng(41.8781136, -87.66677856445312), //center that your map defaults to
-  locationScope:      "chicago",      //geographical area appended to all address searches
-  recordName:         "result",       //for showing number of results
-  recordNamePlural:   "results",
+  map_centroid:       new google.maps.LatLng({{ center_lat }}, {{ center_lng }}), //center that your map defaults to
+  locationScope:      "{{ locationScope }}",      //geographical area appended to all address searches
+  recordName:         "{{ recordName }}",       //for showing number of results
+  recordNamePlural:   "{{ recordNamePlural }}",
 
-  searchRadius:       805,            //in meters ~ 1/2 mile
-  defaultZoom:        11,             //zoom level when map is loaded (bigger is more zoomed in)
-  addrMarkerImage:    'images/blue-pushpin.png',
-  currentPinpoint:    null,
+  searchRadius:       {{ searchRadius }},            //in meters ~ 1/2 mile
+  defaultZoom:        {{ defaultZoom }},             //zoom level when map is loaded (bigger is more zoomed in)
+  addrMarkerImage:    '{{ addrMarkerImage }}',
+  {% if currentPinpoint %}
+    currentPinpoint:    {{ currentPinpoint }},
+  {% else %}
+    currentPinpoint: null,
+  {% endif %}
 
   initialize: function() {
     $( "#result_count" ).html("");
