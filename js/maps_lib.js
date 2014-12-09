@@ -21,27 +21,27 @@ var MapsLib = {
 
   //the encrypted Table ID of your Fusion Table (found under File => About)
   //NOTE: numeric IDs will be depricated soon
-  fusionTableId:      "{{ fusionTableId }}",
+  fusionTableId:      CONFIG.fusionTableId,
 
   //*New Fusion Tables Requirement* API key. found at https://code.google.com/apis/console/
   //*Important* this key is for demonstration purposes. please register your own.
-  googleApiKey:       "{{ googleApiKey }}",
+  googleApiKey:       CONFIG.googleApiKey,
 
   //name of the location column in your Fusion Table.
   //NOTE: if your location column name has spaces in it, surround it with single quotes
   //example: locationColumn:     "'my location'",
-  locationColumn:     "{{ locationColumn }}",
+  locationColumn:     CONFIG.locationColumn,
 
-  map_centroid:       new google.maps.LatLng({{ center_lat }}, {{ center_lng }}), //center that your map defaults to
-  locationScope:      "{{ locationScope }}",      //geographical area appended to all address searches
-  recordName:         "{{ recordName }}",       //for showing number of results
-  recordNamePlural:   "{{ recordNamePlural }}",
+  map_centroid:       new google.maps.LatLng(CONFIG.center_lat, CONFIG.center_lng), //center that your map defaults to
+  locationScope:      CONFIG.locationScope,      //geographical area appended to all address searches
+  recordName:         CONFIG.recordName,       //for showing number of results
+  recordNamePlural:   CONFIG.recordNamePlural,
 
-  searchRadius:       {{ searchRadius }},            //in meters ~ 1/2 mile
-  defaultZoom:        {{ defaultZoom }},             //zoom level when map is loaded (bigger is more zoomed in)
-  addrMarkerImage:    '{{ addrMarkerImage }}',
+  searchRadius:       CONFIG.searchRadius,            //in meters ~ 1/2 mile
+  defaultZoom:        CONFIG.defaultZoom,             //zoom level when map is loaded (bigger is more zoomed in)
+  addrMarkerImage:    CONFIG.addrMarkerImage,
   {% if currentPinpoint %}
-    currentPinpoint:    {{ currentPinpoint }},
+    currentPinpoint:    CONFIG.currentPinpoint,
   {% else %}
     currentPinpoint: null,
   {% endif %}
