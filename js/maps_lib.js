@@ -40,11 +40,7 @@ var MapsLib = {
   searchRadius:       CONFIG.searchRadius,            //in meters ~ 1/2 mile
   defaultZoom:        CONFIG.defaultZoom,             //zoom level when map is loaded (bigger is more zoomed in)
   addrMarkerImage:    CONFIG.addrMarkerImage,
-  {% if currentPinpoint %}
-    currentPinpoint:    CONFIG.currentPinpoint,
-  {% else %}
-    currentPinpoint: null,
-  {% endif %}
+  currentPinpoint:    null,
 
   initialize: function() {
     $( "#result_count" ).html("");
